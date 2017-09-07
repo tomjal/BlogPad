@@ -1,3 +1,8 @@
-<p>
-  blog works!
-</p>
+<h1>New Blog Entry</h1>
+<form>
+  <label for="title">Title</label><br />
+  <input type="text" name="title" [(ngModel)]="input.title" /><br />
+  <label for="content">Content</label><br />
+  <textarea name="content" [(ngModel)]="input.content" style="width: 300px; height: 100px"></textarea><br />
+  <button type="button" (click)="save()">Save</button>
+</form>

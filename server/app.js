@@ -3,12 +3,14 @@ var Express = require("express");
 var UUID = require("uuid");
 var BodyParser = require("body-parser");
 var Bcrypt = require("bcryptjs");
+var Cors = require("cors");
 
 var app = Express();
 var N1qlQuery = Couchbase.N1qlQuery;
 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
+app.use(Cors());
 
 var cluster = new Couchbase.Cluster("couchbase://localhost");
 var bucket = cluster.openBucket("default", "");
@@ -127,6 +129,7 @@ app.post("/blog", validate, (request, response) => {
 app.get("/blogs", validate, (request, response) => {
     console.log(request.pid);
     var query = N1qlQuery.fromString("SELECT `" + bucket._name + "`.* FROM `" + bucket._name + "` WHERE type = 'blog' AND pid = $pid");
+    query.consistency(N1qlQuery.Consistency.REQUEST_PLUS);
     bucket.query(query, { "pid": request.pid }, (error, result) => {
         if (error) {
             return response.status(500).send(error);
