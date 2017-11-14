@@ -1,14 +1,17 @@
 {
   "name": "blogpad-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
-  "license": "MIT",
+  "license": "",
+  "scripts": {
+    "start": "node ./server.js"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "couchbase": "^2.3.7",
-    "express": "^4.15.4",
+    "couchbase": "^2.4.2",
+    "express": "^4.16.2",
     "uuid": "^3.1.0"
   }
 }
