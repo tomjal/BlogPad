@@ -3,7 +3,7 @@
 
 Notepad / blog example Angular 5 with Couchbase NoSQL DB app.
 
-## Yarn/NPM scripts
+## Client Yarn/NPM scripts
 "ng": "ng"
 
 "start": "ng serve"
